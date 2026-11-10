@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-11",
+  "decision": "Ready for GitHub source publication as a research/portfolio project; not a production-security release",
+  "changes": [
+    "Added .gitignore for local data, captures, personal outputs, environments and installer artifacts",
+    "Project MIT license and metadata subsequently removed at the user's request",
+    "Included main.py and UI assets in the wheel",
+    "Moved validation tools out of tmp and updated their test import and README paths",
+    "Preserved dataset validation reports under docs/validation",
+    "Corrected source setup documentation and removed unsupported CI wording"
+  ],
+  "verification": {
+    "clean_upload_snapshot_tests": {
+      "passed": 904,
+      "skipped": 11
+    },
+    "python_sources_parsed": 132,
+    "credential_and_local_user_path_scan": "No matches in upload candidates for the checked patterns; not an exhaustive secret-detection guarantee",
+    "wheel_build": "Passed without downloading dependencies",
+    "wheel_contents": "Launcher and UI assets present; no runtime databases or captures",
+    "isolated_wheel_cli_help": "Passed",
+    "ignored_sensitive_and_generated_paths": "Checked with git check-ignore",
+    "project_license_cleanup": {
+      "status": "Passed",
+      "wheel_sha256": "739991ccfce7fdacc9acada1a244e49e29dc0c3b64ed3e9b7a7a3e858f0d8189",
+      "checks": [
+        "Rebuilt wheel has no License, License-Expression, License-File or MIT classifier",
+        "No project license file bundled",
+        "No stale CANA license fields in generated METADATA or PKG-INFO",
+        "Isolated rebuilt wheel CLI help passed",
+        "Runtime data and build artifacts excluded from upload candidates"
+      ],
+      "third_party_licenses": "Preserved",
+      "windows_installers": "Existing excluded installers not rebuilt; no CANA project metadata found in their unpacked distribution"
+    }
+  },
+  "writing_review": {
+    "profile": "docs/technical",
+    "prose_surfaces_scanned": 134,
+    "editing_passes": 1,
+    "pass_limit": 2,
+    "detector": "Executed before and after documentation edits; also scanned Python comments and docstrings without rewriting code",
+    "marks_normalizer": "Executed on changed editable prose; normalized text checked",
+    "preservation_validator": {
+      "PRODUCTIZATION.md": "Passed",
+      "README.md": "Reported changed headings, added setup code block, moved script paths and Python version correction. Reviewed as authorized publication fixes against pyproject.toml, file locations and tested interpreter, not reported as a mechanical pass."
+    },
+    "residuals": "README bold-formatting flag retained for technical labels and warnings. Source comment/docstring candidates retained as protected source content; technical uses require context, not automatic replacement.",
+    "stop_reason": "No further justified prose-only edits found; source code was not rewritten for style"
+  },
+  "limits": [
+    "No GitHub remote, commit or push",
+    "No installed-service/Npcap acceptance or installer rebuild",
+    "No modern Windows fleet false-positive certification",
+    "No exhaustive vulnerability or dependency-advisory audit",
+    "No fresh-environment dependency download/install test; clean snapshot used existing Python dependencies"
+  ]
+}

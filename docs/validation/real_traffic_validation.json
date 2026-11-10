@@ -1,0 +1,259 @@
+{
+  "scope": "Real captured traffic, evaluated as published Zeek flows; not packet-pipeline replay",
+  "attribution": "Garcia, Parmisano and Erquiaga (2020), IoT-23, doi:10.5281/zenodo.4743746",
+  "method": "Fixed previous thresholds; rolling 12 TCP flows per origin/responder/port; rejection window 60s; cooldown 600s. Only globally routable responders. No threshold tuning.",
+  "label_limit": "Triggering flow labels are descriptive, not ground truth for a whole alert window. No precision or recall claimed.",
+  "captures": [
+    {
+      "capture": "CTU-Honeypot-Capture-4-1",
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-Honeypot-Capture-4-1/bro/conn.log.labeled",
+      "sha256": "aebe40ea0e03b120265a5c7bc140dd9b0d3fe2fce65559e84776b7dd5360e71e",
+      "bytes": 61653,
+      "rows": 452,
+      "labels": {
+        "benign": 452
+      },
+      "detailed_labels": {
+        "-": 452
+      },
+      "span_seconds": 78706.73024511337,
+      "alerts": {
+        "regular_connections:benign": 19
+      },
+      "examples": [
+        {
+          "rule": "regular_connections",
+          "ts": 1540512125.001086,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540512125.092534,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540515724.848363,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540515724.945057,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540519324.912822,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540519325.009016,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540522924.857984,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540522924.949931,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540526524.857591,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540526524.954534,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540530124.860461,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540530124.956405,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540533724.844016,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540533724.936213,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540537324.845662,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540537324.937359,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540540924.868566,
+          "peer": [
+            "192.168.1.132",
+            "52.215.95.120",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540540924.961512,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        },
+        {
+          "rule": "regular_connections",
+          "ts": 1540544524.995102,
+          "peer": [
+            "192.168.1.132",
+            "52.209.221.67",
+            "80"
+          ],
+          "triggering_flow_label": "benign"
+        }
+      ]
+    },
+    {
+      "capture": "CTU-Honeypot-Capture-5-1",
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-Honeypot-Capture-5-1/bro/conn.log.labeled",
+      "sha256": "f36db06e7d6ba7364e932a5b003f75835e004b320d70019e8a2f0ba8685d9262",
+      "bytes": 182147,
+      "rows": 1374,
+      "labels": {
+        "benign": 1374
+      },
+      "detailed_labels": {
+        "-": 1374
+      },
+      "span_seconds": 19750.302448034286,
+      "alerts": {},
+      "examples": []
+    },
+    {
+      "capture": "CTU-IoT-Malware-Capture-20-1",
+      "url": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/CTU-IoT-Malware-Capture-20-1/bro/conn.log.labeled",
+      "sha256": "ef48ad72f65efd13d517223e61e4d877ba53a082ddb8159324b18d3f310d0711",
+      "bytes": 419604,
+      "rows": 3209,
+      "labels": {
+        "benign": 3193,
+        "malicious": 16
+      },
+      "detailed_labels": {
+        "-": 3193,
+        "C&C-Torii": 16
+      },
+      "span_seconds": 86339.94981408119,
+      "alerts": {},
+      "examples": []
+    }
+  ],
+  "approved_rules": [],
+  "decisions": {
+    "regular_connections": "HOLD: cadence is not malware ground truth; no representative Windows benign set or packet pipeline validation.",
+    "tcp_rejection_burst": "HOLD: no validated positive rejection scenario and CANA lacks matched flow outcomes.",
+    "dns_resolver_policy_deviation": "NOT EVALUABLE: conn logs lack DNS query evidence and no approved resolver policy exists."
+  },
+  "existing_live_rules": "Not validated by this flow-only experiment; do not infer certification of existing rules.",
+  "runtime_changed": false
+}

@@ -1,0 +1,134 @@
+{
+  "scope": "Synthetic offline hypothesis validation; not production detector implementation",
+  "thresholds": "Experimental choices, not values endorsed by the cited experts",
+  "cases": [
+    {
+      "name": "synthetic_regular_connection_pattern",
+      "result": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "benign_scheduled_health_checks_same_pattern",
+      "result": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "too_few_connections",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "irregular_connections",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "duplicate_timestamps_not_independent_connections",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "rejection_burst",
+      "result": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "benign_broken_client_same_rejection_pattern",
+      "result": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retransmissions_not_distinct_attempts",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unanswered_is_not_explicitly_rejected",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "normal_successes_reduce_rejection_ratio",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "below_rejection_count",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "resolver_without_policy",
+      "result": null,
+      "expected": null,
+      "passed": true
+    },
+    {
+      "name": "approved_resolver",
+      "result": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "unapproved_plain_dns_resolver",
+      "result": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "https_is_not_proof_of_dns",
+      "result": null,
+      "expected": null,
+      "passed": true
+    }
+  ],
+  "real_traffic_tested": false,
+  "human_review_performed": false,
+  "live_detector_changed": false,
+  "candidates": [
+    {
+      "name": "regular_outbound_connections",
+      "decision": "Do not enable as standalone attack detection",
+      "reason": "Identical cadence flags benign health checks; process/peer context and real benign validation required.",
+      "telemetry_gap": "Need event-time flow observations, SYN retransmission deduplication and stable process identity.",
+      "source": "https://www.elastic.co/security-labs/blog/identifying-beaconing-malware-using-elastic",
+      "authors": [
+        "Apoorva Joshi",
+        "Thomas Veasey",
+        "Craig Chamberlain"
+      ]
+    },
+    {
+      "name": "tcp_rejection_burst",
+      "decision": "Candidate operational anomaly; not validated for live integration",
+      "reason": "Broken clients also trigger. Need matched SYN/RST evidence and real traffic validation; never label brute force.",
+      "telemetry_gap": "Context drops TCP sequence/ack numbers and has no connection outcome tracker.",
+      "source": "https://docs.zeek.org/en/v7.1.1/scripts/base/protocols/conn/main.zeek.html"
+    },
+    {
+      "name": "dns_resolver_policy_deviation",
+      "decision": "Requires explicitly configured resolver policy before integration",
+      "reason": "No policy means unknown. Public DNS is not inherently malicious; HTTPS alone cannot establish DoH.",
+      "telemetry_gap": "No approved resolver policy or VPN/network-change handling configured.",
+      "source": "https://media.defense.gov/2021/Jan/14/2002564889/-1/-1/0/CSI_ADOPTING_ENCRYPTED_DNS_U_OO_102904_21.PDF"
+    }
+  ],
+  "release_gate": [
+    "Preserve capture timestamps and connection identity; test retries, IPv6, missing packets and restarts.",
+    "Replay labelled positive samples and separate representative benign Windows traffic without transmitting them.",
+    "Measure missed cases and false alerts per host-day on held-out data; do not tune and score on the same traces.",
+    "Demonstrate bounded memory, duplicate suppression, persistence and truthful UI explanations.",
+    "Only then integrate the candidate; no automatic blocking from these patterns."
+  ]
+}

@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-aware-network-behavior-analyzer"
+version = "1.0.0"
+description = "Context-Aware Network Behavior Analyzer: live packet capture with application attribution, user-activity context, baseline-driven anomaly detection, risk scoring/correlation, and a native Windows UI."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "CANA Project" }]
+keywords = [
+    "network",
+    "anomaly-detection",
+    "packet-capture",
+    "security",
+    "scapy",
+    "baseline",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Security",
+    "Topic :: System :: Networking :: Monitoring",
+]
+
+# Core capture/detection dependencies. Module 5's desktop notifications
+# and Module 3's input listeners are optional: plyer and evdev are NOT
+# listed here so installs that cannot provide them still succeed.
+dependencies = [
+    "scapy==2.7.0",
+    "psutil==7.2.2",
+    "pynput==1.7.8",
+]
+
+[project.optional-dependencies]
+notify = ["plyer>=2.1"]
+linux-input = ["evdev>=1.6"]
+windows = ["pywin32>=306"]
+ui = ["pystray>=0.19", "Pillow>=10.0"]
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+]
+
+[project.scripts]
+cana = "main:main"
+cana-service = "cana_service.service:handle_service_cli"
+cana-ui = "cana_ui.app:main"
+
+[tool.setuptools]
+py-modules = ["main"]
+packages = [
+    "packet_capture",
+    "user_activity",
+    "anomaly_detection",
+    "risk_scoring",
+    "cana_engine",
+    "cana_service",
+    "cana_ui",
+]
+
+[tool.setuptools.package-data]
+cana_ui = ["assets/*.png", "assets/*.ico"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "windows: live Windows SCM/Npcap/named-pipe acceptance (set CANA_ACCEPTANCE=1)",
+]

@@ -1,0 +1,485 @@
+{
+  "scope": "Actual offline packet replay; isolated cold baselines per host; no live sockets, notifications or database writes",
+  "missing_context": [
+    "historical process attribution",
+    "historical user activity"
+  ],
+  "windows_source": "https://huggingface.co/datasets/bvsam/cic-ids-2017/resolve/main/pcap/Monday-WorkingHours.pcap",
+  "windows_provenance": "Mirror; first 128 MiB, split at complete block boundary 33554332. First 32 MiB discovery; subsequent bytes holdout with fresh baselines. Final 1564 incomplete bytes excluded. Windows IP mapping/benign Monday label: https://www.unb.ca/cic/datasets/ids-2017.html. Lab-generated user profiles; not a modern Windows fleet validation.",
+  "nmap_source": "https://wiki.wireshark.org/uploads/__moin_import__/attachments/SampleCaptures/NMap-Captures.zip",
+  "iot_source": "https://mcfp.felk.cvut.cz/publicDatasets/IoT-23-Dataset/IndividualScenarios/",
+  "approved_scope": "Three enabled rules pass these samples only. No production accuracy claim.",
+  "decisions": {
+    "tcp_port_probe": "Enabled: positive standard/OS scans, zero benign sample alerts.",
+    "inbound_tcp_port_probe": "Enabled: positive standard/OS scans from target perspective, zero benign sample alerts.",
+    "unusual_tcp_flags": "Enabled: positive OS scan, zero benign sample alerts.",
+    "tcp_host_probe": "Diagnostic only: false alert on labelled benign Windows discovery sample.",
+    "connection_rate_anomaly": "Diagnostic only: false alert on Windows and repeated benign Hue alerts.",
+    "unknown_application_internet": "Diagnostic only: missing ownership is not security evidence; PCAP cannot validate live attribution.",
+    "packet_size_anomaly": "Diagnostic only: size alone is not security evidence.",
+    "idle_large_transfer": "Diagnostic only: no recorded user activity or positive validation.",
+    "internet_smb_attempt": "Diagnostic only: no positive/benign service-policy validation.",
+    "public_legacy_service": "Diagnostic only: no positive/benign service-policy validation.",
+    "long_dns_query_burst": "Diagnostic only: no labelled positive DNS-tunnel coverage.",
+    "dns_failure_burst": "Diagnostic only: no labelled positive DNS-failure coverage.",
+    "upload_heavy_transfer": "Diagnostic only: no labelled exfiltration/benign backup coverage."
+  },
+  "original_download_sha256": {
+    "monday-128m.pcapng": "d9c2201c95431e930a9f7abed722d4e17c14ce49b2f27f516c41aebfe4061910",
+    "nmap-captures.zip": "3fac3f99402b5b6a2bc819ce7c9ba4aab58756e3353412a7834bfce02f098305"
+  },
+  "captures": [
+    {
+      "file": "monday-prefix-complete.pcapng",
+      "sha256": "556723276d6dd2f37fe2d615aee333a02fc1c4ee4153de9fff4b479eb5cb00ad",
+      "packets": 54632,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 1213,
+      "timestamp_regressions": 22,
+      "span_seconds": 635.3565549850464,
+      "hosts": {
+        "192.168.10.9": {
+          "packets": 12686,
+          "observed_span_seconds": 595.4669299125671,
+          "evaluated": {
+            "idle_large_transfer": 12686,
+            "unknown_application_internet": 12686,
+            "packet_size_anomaly": 12686,
+            "connection_rate_anomaly": 12686,
+            "tcp_port_probe": 12686,
+            "tcp_host_probe": 12686,
+            "internet_smb_attempt": 12686,
+            "inbound_tcp_port_probe": 12686,
+            "unusual_tcp_flags": 12686,
+            "long_dns_query_burst": 12686,
+            "public_legacy_service": 12686,
+            "dns_failure_burst": 12686,
+            "upload_heavy_transfer": 12686
+          },
+          "raw_triggers": {
+            "packet_size_anomaly": 422,
+            "unknown_application_internet": 9859,
+            "connection_rate_anomaly": 1
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.5": {
+          "packets": 8,
+          "observed_span_seconds": 1.0013580322265625e-05,
+          "evaluated": {
+            "idle_large_transfer": 8,
+            "unknown_application_internet": 8,
+            "packet_size_anomaly": 8,
+            "connection_rate_anomaly": 8,
+            "tcp_port_probe": 8,
+            "tcp_host_probe": 8,
+            "internet_smb_attempt": 8,
+            "inbound_tcp_port_probe": 8,
+            "unusual_tcp_flags": 8,
+            "long_dns_query_burst": 8,
+            "public_legacy_service": 8,
+            "dns_failure_burst": 8,
+            "upload_heavy_transfer": 8
+          },
+          "raw_triggers": {
+            "unknown_application_internet": 8
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.8": {
+          "packets": 0,
+          "observed_span_seconds": 0,
+          "evaluated": {},
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        },
+        "192.168.10.14": {
+          "packets": 15898,
+          "observed_span_seconds": 611.6238451004028,
+          "evaluated": {
+            "idle_large_transfer": 15898,
+            "unknown_application_internet": 15898,
+            "packet_size_anomaly": 15898,
+            "connection_rate_anomaly": 15898,
+            "tcp_port_probe": 15898,
+            "tcp_host_probe": 15898,
+            "internet_smb_attempt": 15898,
+            "inbound_tcp_port_probe": 15898,
+            "unusual_tcp_flags": 15898,
+            "long_dns_query_burst": 15898,
+            "public_legacy_service": 15898,
+            "dns_failure_burst": 15898,
+            "upload_heavy_transfer": 15898
+          },
+          "raw_triggers": {
+            "unknown_application_internet": 12571,
+            "packet_size_anomaly": 221,
+            "tcp_host_probe": 1
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.15": {
+          "packets": 0,
+          "observed_span_seconds": 0,
+          "evaluated": {},
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        }
+      }
+    },
+    {
+      "file": "monday-holdout.pcapng",
+      "sha256": "08ceabbbc1baba0ebbf041bb33574ad5cd07bd97fe3a18e34b9776bdecad6b44",
+      "packets": 115600,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 913,
+      "timestamp_regressions": 15,
+      "span_seconds": 453.4634761810303,
+      "hosts": {
+        "192.168.10.9": {
+          "packets": 5831,
+          "observed_span_seconds": 451.541375875473,
+          "evaluated": {
+            "idle_large_transfer": 5831,
+            "unknown_application_internet": 5831,
+            "packet_size_anomaly": 5831,
+            "connection_rate_anomaly": 5831,
+            "tcp_port_probe": 5831,
+            "tcp_host_probe": 5831,
+            "internet_smb_attempt": 5831,
+            "inbound_tcp_port_probe": 5831,
+            "unusual_tcp_flags": 5831,
+            "long_dns_query_burst": 5831,
+            "public_legacy_service": 5831,
+            "dns_failure_burst": 5831,
+            "upload_heavy_transfer": 5831
+          },
+          "raw_triggers": {
+            "unknown_application_internet": 4698,
+            "packet_size_anomaly": 168,
+            "tcp_host_probe": 1,
+            "connection_rate_anomaly": 17
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.5": {
+          "packets": 9455,
+          "observed_span_seconds": 356.3183400630951,
+          "evaluated": {
+            "idle_large_transfer": 9455,
+            "unknown_application_internet": 9455,
+            "packet_size_anomaly": 9455,
+            "connection_rate_anomaly": 9455,
+            "tcp_port_probe": 9455,
+            "tcp_host_probe": 9455,
+            "internet_smb_attempt": 9455,
+            "inbound_tcp_port_probe": 9455,
+            "unusual_tcp_flags": 9455,
+            "long_dns_query_burst": 9455,
+            "public_legacy_service": 9455,
+            "dns_failure_burst": 9455,
+            "upload_heavy_transfer": 9455
+          },
+          "raw_triggers": {
+            "packet_size_anomaly": 160,
+            "unknown_application_internet": 6125
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.8": {
+          "packets": 0,
+          "observed_span_seconds": 0,
+          "evaluated": {},
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        },
+        "192.168.10.14": {
+          "packets": 77589,
+          "observed_span_seconds": 453.4634761810303,
+          "evaluated": {
+            "idle_large_transfer": 77589,
+            "unknown_application_internet": 77589,
+            "packet_size_anomaly": 77589,
+            "connection_rate_anomaly": 77589,
+            "tcp_port_probe": 77589,
+            "tcp_host_probe": 77589,
+            "internet_smb_attempt": 77589,
+            "inbound_tcp_port_probe": 77589,
+            "unusual_tcp_flags": 77589,
+            "long_dns_query_burst": 77589,
+            "public_legacy_service": 77589,
+            "dns_failure_burst": 77589,
+            "upload_heavy_transfer": 77589
+          },
+          "raw_triggers": {
+            "unknown_application_internet": 72872,
+            "packet_size_anomaly": 1988,
+            "tcp_host_probe": 3,
+            "connection_rate_anomaly": 16
+          },
+          "emitted_alerts": {}
+        },
+        "192.168.10.15": {
+          "packets": 0,
+          "observed_span_seconds": 0,
+          "evaluated": {},
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        }
+      }
+    },
+    {
+      "file": "hue.pcap.xz",
+      "sha256": "bc5a57306d9a5f614b09d9c0976f007667fee5b6de3427fbab094fa3084b9b64",
+      "packets": 21664,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 4743,
+      "timestamp_regressions": 0,
+      "span_seconds": 78846.39936304092,
+      "hosts": {
+        "192.168.1.132": {
+          "packets": 16921,
+          "observed_span_seconds": 78841.40669417381,
+          "evaluated": {
+            "idle_large_transfer": 16921,
+            "unknown_application_internet": 16921,
+            "packet_size_anomaly": 16921,
+            "connection_rate_anomaly": 16921,
+            "tcp_port_probe": 16921,
+            "tcp_host_probe": 16921,
+            "internet_smb_attempt": 16921,
+            "inbound_tcp_port_probe": 16921,
+            "unusual_tcp_flags": 16921,
+            "long_dns_query_burst": 16921,
+            "public_legacy_service": 16921,
+            "dns_failure_burst": 16921,
+            "upload_heavy_transfer": 16921
+          },
+          "raw_triggers": {
+            "unknown_application_internet": 7487,
+            "connection_rate_anomaly": 3882,
+            "packet_size_anomaly": 113
+          },
+          "emitted_alerts": {}
+        }
+      }
+    },
+    {
+      "file": "iot20.pcap",
+      "sha256": "4d0a00c33a4bf11228158baddd47c38f702731ea8d75ef1201061fc8bbd878b9",
+      "packets": 50156,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 8949,
+      "timestamp_regressions": 0,
+      "span_seconds": 86377.64332914352,
+      "hosts": {
+        "192.168.100.103": {
+          "packets": 41207,
+          "observed_span_seconds": 86377.64332914352,
+          "evaluated": {
+            "idle_large_transfer": 41207,
+            "unknown_application_internet": 41207,
+            "packet_size_anomaly": 41207,
+            "connection_rate_anomaly": 41207,
+            "tcp_port_probe": 41207,
+            "tcp_host_probe": 41207,
+            "internet_smb_attempt": 41207,
+            "inbound_tcp_port_probe": 41207,
+            "unusual_tcp_flags": 41207,
+            "long_dns_query_burst": 41207,
+            "public_legacy_service": 41207,
+            "dns_failure_burst": 41207,
+            "upload_heavy_transfer": 41207
+          },
+          "raw_triggers": {
+            "packet_size_anomaly": 67,
+            "unknown_application_internet": 40067,
+            "connection_rate_anomaly": 18195
+          },
+          "emitted_alerts": {}
+        }
+      }
+    },
+    {
+      "file": "nmap_standard_scan.pcap",
+      "sha256": "f59479ce3b783ad0a17833875fc1abb7240c81395559b3e194105aaa9233f2be",
+      "packets": 2004,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 4,
+      "timestamp_regressions": 0,
+      "span_seconds": 34.111860036849976,
+      "hosts": {
+        "192.168.100.103": {
+          "packets": 2000,
+          "observed_span_seconds": 21.105751037597656,
+          "evaluated": {
+            "idle_large_transfer": 2000,
+            "unknown_application_internet": 2000,
+            "packet_size_anomaly": 2000,
+            "connection_rate_anomaly": 2000,
+            "tcp_port_probe": 2000,
+            "tcp_host_probe": 2000,
+            "internet_smb_attempt": 2000,
+            "inbound_tcp_port_probe": 2000,
+            "unusual_tcp_flags": 2000,
+            "long_dns_query_burst": 2000,
+            "public_legacy_service": 2000,
+            "dns_failure_burst": 2000,
+            "upload_heavy_transfer": 2000
+          },
+          "raw_triggers": {
+            "tcp_port_probe": 1
+          },
+          "emitted_alerts": {
+            "tcp_port_probe": 1
+          }
+        },
+        "192.168.100.102": {
+          "packets": 2000,
+          "observed_span_seconds": 21.105751037597656,
+          "evaluated": {
+            "idle_large_transfer": 2000,
+            "unknown_application_internet": 2000,
+            "packet_size_anomaly": 2000,
+            "connection_rate_anomaly": 2000,
+            "tcp_port_probe": 2000,
+            "tcp_host_probe": 2000,
+            "internet_smb_attempt": 2000,
+            "inbound_tcp_port_probe": 2000,
+            "unusual_tcp_flags": 2000,
+            "long_dns_query_burst": 2000,
+            "public_legacy_service": 2000,
+            "dns_failure_burst": 2000,
+            "upload_heavy_transfer": 2000
+          },
+          "raw_triggers": {
+            "inbound_tcp_port_probe": 1
+          },
+          "emitted_alerts": {
+            "inbound_tcp_port_probe": 1
+          }
+        }
+      }
+    },
+    {
+      "file": "nmap_OS_scan_succesful.pcap",
+      "sha256": "2eaca3a56fbdc1c95338ae85f00567fae41daa7d791293133094f544fe869459",
+      "packets": 2052,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 4,
+      "timestamp_regressions": 0,
+      "span_seconds": 18.867460012435913,
+      "hosts": {
+        "192.168.100.103": {
+          "packets": 2048,
+          "observed_span_seconds": 5.860627889633179,
+          "evaluated": {
+            "idle_large_transfer": 2048,
+            "unknown_application_internet": 2048,
+            "packet_size_anomaly": 2048,
+            "connection_rate_anomaly": 2048,
+            "tcp_port_probe": 2048,
+            "tcp_host_probe": 2048,
+            "internet_smb_attempt": 2048,
+            "inbound_tcp_port_probe": 2048,
+            "unusual_tcp_flags": 2048,
+            "long_dns_query_burst": 2048,
+            "public_legacy_service": 2048,
+            "dns_failure_burst": 2048,
+            "upload_heavy_transfer": 2048
+          },
+          "raw_triggers": {
+            "tcp_port_probe": 1,
+            "packet_size_anomaly": 19,
+            "unusual_tcp_flags": 1
+          },
+          "emitted_alerts": {
+            "tcp_port_probe": 1,
+            "unusual_tcp_flags": 1
+          }
+        },
+        "192.168.100.101": {
+          "packets": 2048,
+          "observed_span_seconds": 5.860627889633179,
+          "evaluated": {
+            "idle_large_transfer": 2048,
+            "unknown_application_internet": 2048,
+            "packet_size_anomaly": 2048,
+            "connection_rate_anomaly": 2048,
+            "tcp_port_probe": 2048,
+            "tcp_host_probe": 2048,
+            "internet_smb_attempt": 2048,
+            "inbound_tcp_port_probe": 2048,
+            "unusual_tcp_flags": 2048,
+            "long_dns_query_burst": 2048,
+            "public_legacy_service": 2048,
+            "dns_failure_burst": 2048,
+            "upload_heavy_transfer": 2048
+          },
+          "raw_triggers": {
+            "inbound_tcp_port_probe": 1,
+            "packet_size_anomaly": 19,
+            "unusual_tcp_flags": 1
+          },
+          "emitted_alerts": {
+            "inbound_tcp_port_probe": 1,
+            "unusual_tcp_flags": 1
+          }
+        }
+      }
+    },
+    {
+      "file": "nmap_ACK_scan_on_port_80.pcap",
+      "sha256": "3749f9ca8fec27a89c6322da4e3421f2c29dff17de9503d74aeb1b3226fc11b1",
+      "packets": 6,
+      "truncated_records_excluded": 0,
+      "validator_rejections": 4,
+      "timestamp_regressions": 0,
+      "span_seconds": 13.108612060546875,
+      "hosts": {
+        "192.168.100.103": {
+          "packets": 2,
+          "observed_span_seconds": 0.10063695907592773,
+          "evaluated": {
+            "idle_large_transfer": 2,
+            "unknown_application_internet": 2,
+            "packet_size_anomaly": 2,
+            "connection_rate_anomaly": 2,
+            "tcp_port_probe": 2,
+            "tcp_host_probe": 2,
+            "internet_smb_attempt": 2,
+            "inbound_tcp_port_probe": 2,
+            "unusual_tcp_flags": 2,
+            "long_dns_query_burst": 2,
+            "public_legacy_service": 2,
+            "dns_failure_burst": 2,
+            "upload_heavy_transfer": 2
+          },
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        },
+        "192.168.100.102": {
+          "packets": 2,
+          "observed_span_seconds": 0.10063695907592773,
+          "evaluated": {
+            "idle_large_transfer": 2,
+            "unknown_application_internet": 2,
+            "packet_size_anomaly": 2,
+            "connection_rate_anomaly": 2,
+            "tcp_port_probe": 2,
+            "tcp_host_probe": 2,
+            "internet_smb_attempt": 2,
+            "inbound_tcp_port_probe": 2,
+            "unusual_tcp_flags": 2,
+            "long_dns_query_burst": 2,
+            "public_legacy_service": 2,
+            "dns_failure_burst": 2,
+            "upload_heavy_transfer": 2
+          },
+          "raw_triggers": {},
+          "emitted_alerts": {}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage*
+htmlcov/
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Local runtime data and research inputs
+/data/
+/logs/
+/sessions/
+/tmp/
+/output/
+*.db
+*.db-*
+*.sqlite*
+*.log
+*.pcap
+*.pcapng
+*.pcap.xz
+*.etl
+
+# Generated installers and downloaded build tools
+/packaging/build/
+/packaging/dist/
+/packaging/output/
+/packaging/release/
+/packaging/tools/
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+.codex/
+.agents/
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
